@@ -3,15 +3,17 @@
 int main() {
   for (int i = 0; i < 10; ++i) {
     std::cout << i << " "; // if the action is just one line, {} can be omitted
+    // mettere  " " stampa lo spazio tra una i e l'altra
+    //se invece di " " metto std::endl mi va a capo, lo stesso se metto '\n'
   }
 
   // std::cout << i << '\n';	// error, i is out of scope
-
+ 
   std::cout << std::endl;
 
-  int i{};
+  int i{};//inizializzato a 0
 
-  while (i < 10)
+   while (i < 10)
     std::cout << i++ << " ";
 
   std::cout << "\n after while i is " << i << "\n";

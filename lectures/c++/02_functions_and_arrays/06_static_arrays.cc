@@ -1,6 +1,10 @@
 #include <iostream>
-
-void surprise(double a[], const std::size_t n) {
+//array è una sequenza di elementi dello stesso tipo,
+//immagazzinata in locazioni di memoria contigue.
+void surprise(double a[], const std::size_t n){
+  //can store the maximum size of a theoretically possible object of any type
+  //(including array)
+  // commonly used for array indexing and loop counting
   for (auto i = 0llu; i < n; ++i) {
     a[i] = 77;
   }
