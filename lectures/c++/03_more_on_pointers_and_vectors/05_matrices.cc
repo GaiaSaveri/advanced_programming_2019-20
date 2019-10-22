@@ -25,7 +25,7 @@ int main() {
     std::cout << std::endl;
   }
   //print addresses to see how it is in the memory
-  //actually they are contnuous
+  //actually they are continuous
   //a matrix is stored as a long array 
   for (int i = 0; i < 6; ++i) {
     for (int j = 0; j < 5; ++j)
@@ -55,7 +55,7 @@ int main() {
 }
 //c++ is row-wise
 //in memory rows are allined
-//1stelement of the second row is the...
+//1 stelement of the second row is the...
 void print_ma(int* p, int row, int col) {
   for (int i = 0; i < row; ++i) {
     for (int j = 0; j < col; ++j)
