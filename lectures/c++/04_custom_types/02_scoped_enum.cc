@@ -2,6 +2,12 @@
 
 enum class color { red, yellow, green };//note the use of class
 // enum class color{red=0, yellow=1, green=2}; // equivalent
+//Each enumerator becomes a named constant of the enumeration's type
+//which is contained within the scope of the enumeration,
+//and can be accessed using scope resolution operator.
+//There are no implicit conversions from the values of a scoped enumerator
+//to integral types, although static_cast may be used
+//to obtain the numeric value of the enumerator. 
 
 void dwim(const color c) {
   switch (c) {

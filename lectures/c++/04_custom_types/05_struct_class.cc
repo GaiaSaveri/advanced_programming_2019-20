@@ -3,7 +3,7 @@
 #include <vector>
 
 struct Point_s {
-  //privat is the default visibility of the symbols
+  //private is the default visibility of the symbols
   //this is a difference with C struct
   //private:
   double x;
@@ -19,8 +19,9 @@ void Point_s::print() {
 class Point_c {
   double x;
   double y;
-
+  //private: accessible only from within other members of the same class
  public:
+  //public:     accessible from anywhere where the object is visible
   void print() { //this function is defined inside this class
     std::cout << "Class. x = " << x << "; y = " << y << std::endl;
   }  // note no ; at the end
@@ -42,10 +43,12 @@ int main() {
   //cannot access from outside
   pc.print();  // I can access private data through public functions
 
-  Point_s* p = &ps; //pointer to a class
-  //size of a class is greateer or equal to the size of each element
+  Point_s* p = &ps; //pointer to a struct
+  //size of a struct is greateer or equal to the size of each element
   //size of pointer is always 64bits, it is convenient to pass a pointer
+  //A pointer to a struct can be cast to a pointer to its first member
   p->x = 0.0;
+  //p now points to the struct
   //arrow operator
   p->print();
 

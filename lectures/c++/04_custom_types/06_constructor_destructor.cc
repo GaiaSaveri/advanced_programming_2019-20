@@ -6,11 +6,14 @@
 //but only one destruptor
 //the destruptor is used when a variable goes out of scope
 //scope: space inside {}
-//delete call the detruptor, new call the constructor
+//delete call the destruptor, new call the constructor
 
+//constructor is a member function of a class
+//which initializes objects of a class
 
 //constructor have the same name as the class
 //same syntax as functions but without a return type
+//if we don't specify a constructor, the compiler genrate a default constructor
 
 struct Foo {
   int _i;
@@ -19,6 +22,7 @@ struct Foo {
 
   Foo(const int i, const double d,
       const std::string& s);  // custom constructor (declaration)
+  //paremetrized constructor
   //we can implement things inside or outside the class
   //function that are defined inside the class are inlined
   //copy and paste a copy of the function
@@ -35,7 +39,7 @@ struct Foo {
 //fully qualified name of a constructor
 Foo::Foo(const int i, const double d, const std::string& s)
   //constructors are special functions
-  //region before {} isallowed only when defining a constructor
+  //region before {} is allowed only when defining a constructor
   //inside this region we should invoke constructor of the vars
   //in this way we construct vars with the right value
     : _i{i}, //universal, uniform inizializer is allowed here
@@ -70,6 +74,8 @@ Foo::~Foo() {
 //functions with special name
 //in this case we want to overload << operator
 //the overload operator must be defined outside the class
+//at least one of its operands has a class type or an enumeration time
+//overload operators are expected to work as similar as possible to the built in
 std::ostream& operator<<(std::ostream& os, const Foo& f) {
   os << f._i << " " << f._d << " " << f._s << std::endl;
   return os; //by reference

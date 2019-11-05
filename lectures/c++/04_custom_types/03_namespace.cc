@@ -1,6 +1,6 @@
 #include <iostream>
 
-//way to organize symbols and avoid name clashings
+//way to organize symbols and avoid name conflicts 
 namespace choose_a_name {
 
   int variable;

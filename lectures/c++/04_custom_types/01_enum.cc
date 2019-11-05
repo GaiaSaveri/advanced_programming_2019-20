@@ -7,13 +7,20 @@ enum color { red, yellow, green };
 //way to have different constants, named constants
 //we are defining the type color, technically they are integers
 
+//enumeration is a distinct type whose value is restricted to a range of values
+//which may include several explicitly named constants (enumerators)
+
 //metti const expression nel file di conersione da m a inch
 
 
 void dwim(const color c) {
   //switch is handful when we have a lot of if statements
+  //le espressioni switch devono restiture tipo intero (anche char)
+  //o un valore enum
   switch (c) {
     case red:
+      //alle etichette case deve essere associato un valore costante
+      //noto a tempo di compilazione
       std::cout << "option 1: red\n";
       break; //if we don't put break it will analizes also the other cases
     case yellow:
@@ -23,6 +30,8 @@ void dwim(const color c) {
       std::cout << "option 3: green\n";
       break;
     default: //recommended default option
+      //se nessuna delle etichette ha valore corrispondente
+      //a quello dell'espressione 
       std::cout << "unknown option\n";  // should I exit the program?
       break;
   }
