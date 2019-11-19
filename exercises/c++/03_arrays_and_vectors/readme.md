@@ -84,7 +84,7 @@ auto t0 = high_resolution_clock::now();
 
 
 ## **Optional**: Conway's Game of Life
-- Implement the [Game of Life](https://www.wikidata.org/wiki/Q244615#sitelinks-wikipedia)
+- Implement the [Game of Life](https://www.wikihttps://www.geeksforgeeks.org/constructors-c/data.org/wiki/Q244615#sitelinks-wikipedia)
 - You can take a nap as follows:
 ```c++
 #include <chrono>

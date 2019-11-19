@@ -15,10 +15,15 @@ int main() {
   int* ap[7]; //array of pointers to integers
 
   void* pv{pi}; //special type of pointer, we can convert any pointer to a void
+//a void pointer does not know what type of object it is pointing to
+//can be pointed at objects of any data type
   //but cannot dereference a pointer to a void
   //bc we don't know the size, and when we dereference we need to know the type
+  //deference operator --> value pointed to by
   //we can use the casts
   //a cast is a conversion to a different type
+  //a void pointer must be first explicitly cast to another pointer 
+  //type before it is dereferenced
   // *pv; // we cannot dereference void*
   // ++pv; // we cannot increment. Why?
   int* pi2{static_cast<int*>(pv)};
@@ -77,7 +82,7 @@ int main() {
   
   fp = func1;
 
-  fp("hello");
+  fp("hello"); //call the function throught its pointer
 
   fp = &func2; //same if I do fp=func2
   fp("world");

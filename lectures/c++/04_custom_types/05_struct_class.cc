@@ -29,7 +29,7 @@ class Point_c {
 
 int main() {
   Point_s ps;
-  
+  //var of the struct are public!
   ps.x = 9.9;
   ps.y = 3. / 7;
 
@@ -49,7 +49,9 @@ int main() {
   //A pointer to a struct can be cast to a pointer to its first member
   p->x = 0.0;
   //p now points to the struct
-  //arrow operator
+  //arrow operator: used with a POINTER VARIABLE 
+  //pointing to a structure
+  //allows to access elements in structures
   p->print();
 
   //once you have a type you can have a reference to that type
