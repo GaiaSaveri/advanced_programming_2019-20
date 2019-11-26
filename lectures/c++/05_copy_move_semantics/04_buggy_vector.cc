@@ -1,6 +1,6 @@
 #include <iostream>
 
-//copy comstructor + copy assignment = copy semantic
+//copy constructor + copy assignment = copy semantic
 
 template <typename T>
 class Vector {
@@ -8,7 +8,13 @@ class Vector {
   std::size_t _size; 
   //type --> particular impementation of a concept
  public:
-  //explicit?
+  //explicit:if a class has a constructor which can be called 
+//with a single argument, then this constructor becomes conversion 
+//constructor because such a constructor allows conversion of the 
+//single argument to the class being constructed.
+//We can avoid such implicit conversions 
+//as these may lead to unexpected results. 
+//We can make the constructor explicit 
   explicit Vector(const std::size_t length)
       : elem{new T[length]{}}, _size{length} {}
   //T length is array of type T and length "length"

@@ -35,20 +35,20 @@ class Vector {
 
   // copy assignment -- deep copy
   Vector& operator=(const Vector& v); //overload of the operator =
-
   // end of copy semantics
   /////////////////////////
 
   /////////////////////////
   // move semantics
-
+//we are a vector and we want to refer to the elements of another 
+//vector without any copy
   // move ctor
   //the compiler does a move elementwise
   //with row pointer, built in type, this is not fine
   Vector(Vector&& v) : _size{std::move(v._size)}, elem{std::move(v.elem)} {
     std::cout << "move ctor\n";
   }
-
+//goal is to move v to the current vector-->after move v is empty
   //want to swap two objects, without creating a third object
   //this is done by moving semantic
   //most efficient implementation of swap
@@ -61,8 +61,13 @@ class Vector {
   // Vector(Vector&& v) = default; // ok
 
   //think the move as a swap
-  
-  // move assignment
+
+
+ //la move semantics consente di evitare copie non necessarie quando
+//si lavora con oggetti temporanei
+
+
+// move assignment
   //move assignment in all the elements (on each element)
   Vector& operator=(Vector&& v) {
     std::cout << "move assignment\n";
@@ -89,11 +94,14 @@ class Vector {
   T* end() { return &elem[_size]; }
 };
 
-// copy ctor
+// copy ctor --> take as argument the object from which to copy
 template <typename T>
 Vector<T>::Vector(const Vector& v) : _size{v._size}, elem{new T[_size]} {
   std::cout << "copy ctor\n";
   std::copy(v.begin(), v.end(), begin());
+//copies from v.begin() to v.end() 
+//(last element copied is v.end()-1)
+//the copy starts at begin()
 }
 
 // copy assignment
@@ -110,12 +118,19 @@ Vector<T>& Vector<T>::operator=(const Vector& v) {
   //
 
   elem.reset();              // first of all clean my memory
+//so now elem is empty --> deallocating the old space
   //reset is a function of the unique pointer
-  auto tmp = v;              // then use copy ctor
-  //v is a vector, tmp is a new vector, called copy constructor
-  (*this) = std::move(tmp);  // finally move assignment
-
-  //overload of operators works with objectos not pointers
+//that destroys the object currently managed by the unique pointer
+  auto tmp = v;  //here in tmp we make a copy of v     
+//the pointer "this" points to the object
+//the member function was called  
+ (*this) = std::move(tmp);  // finally move assignment
+//in this case "this" points to a unique ptr
+//so *this is a unique pointer
+//with std::move the property of "this", namely *this, 
+//is given to tmp
+//now we are pointing to the new elements
+  //overload of operators works with objects not pointers
 
   // or we do everything by hand..
   // and we can do not reset and call new again if the sizes are suitable
