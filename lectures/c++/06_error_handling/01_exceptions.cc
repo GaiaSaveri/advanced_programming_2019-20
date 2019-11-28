@@ -15,13 +15,18 @@ int main() {
   //try catch can be at any function, not only the main
   //one try, more catch
   try {
+    //we place a portion of code under inspection within a try-block
+    //when we have an exception the control is made by
+    //the exceptions handler
+    //exception is thrown using the throw keyword inside the try
+    //exception handlers are declared with catch
     std::cout << "please insert a number\n";
     double number;
     std::cin >> number;
     auto d = square_root(number);
     std::cout << "square root of " << number << " is " << d << '\n';
     return 0;
-  } //can detect 2 errors, negative argument or bugger than a treshold
+  } //can detect 2 errors, negative argument or bigger than a treshold
   catch (const Negative_number) {
     std::cerr << "The square root of a negative number is a complex number.\n"
                  "square_root() is "
@@ -46,6 +51,8 @@ double square_root(const double d) {
   if (d < 0)
     throw Negative_number{}; //default constructor
   //construct an object negative number
+  //  throw accepts only one parameter which is passed as argument to the
+  //exception handler catch
   if (d > 50)
     throw Bigger_than_expected{};
   return std::sqrt(d);

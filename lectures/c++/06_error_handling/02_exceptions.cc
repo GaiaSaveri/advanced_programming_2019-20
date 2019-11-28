@@ -24,6 +24,7 @@ int main() {
     std::cerr << s.message << std::endl; //print in standard error
     //now it's not the user to write what happened
     //the developer wrapped the message for the user
+    //std::cerr is the standard error stream
     return 1;
   } catch (...) {
     std::cerr << "Unknown exception. Aborting.\n";
@@ -34,6 +35,8 @@ int main() {
 double square_root(const double d) {
   // test the pre-conditions
   if (d < 0)
+    //invoke contructor of struct
+    //building the var message
     throw Square_root_invalid{"Cannot handle negative numbers. You gave me " +
                               std::to_string(d)};
   //more informative than the others before
