@@ -2,7 +2,7 @@
 #include <memory>  //unique_ptr
 
 #include "ap_error.h"
-
+//we want to implement also the iterators
 enum class method { push_back, push_front };
 
 template <class T>
@@ -55,6 +55,27 @@ class List {
   template <class O>
   friend std::ostream& operator<<(std::ostream&, const List<O>&);
 };
+
+template<typename O>
+class __iterator;
+using iterator = __iterator<T>;
+using const_iterator = __iterator<const T>;
+				 
+  iterator begin() {}
+  iteator end() {}
+  const_iterator begin() const {} //const iterator returns const reference
+  const_iterator end() const {}
+  const_iterator cbegin() {}
+  const_iterator cend() {}
+
+  //all the standard libraries are headers that are in our computer
+  //we can see them to take inspiration
+};
+
+
+template<typename T>
+template<typename O>
+
 
 template <class T>
 typename List<T>::node* List<T>::tail() noexcept {
