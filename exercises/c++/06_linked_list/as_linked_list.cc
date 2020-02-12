@@ -8,8 +8,10 @@ enum class method { push_back, push_front };
 template <class T>
 class List {
   struct node {
-    std::unique_ptr<node> next;
-    T value;
+    std::unique_ptr<node> next; //pointer to next node
+    //since it points to a node it can see both is pointer to the next
+    //and its value
+    T value; //value stored in the node
     node(const T& v, node* p) : next{p}, value{v} {
       std::cout << "copy ctor" << std::endl;
     }
@@ -17,18 +19,26 @@ class List {
       std::cout << "move ctor" << std::endl;
     }
     explicit node(const std::unique_ptr<node>& p) : value{p->value} {
-      if (p->next)
+      //this is a ctor
+      //want to construct a node from a unique_optr to a node
+      if (p->next) //if this is different from the nullptr
+	//p->next access the element next of p
+	//p points to a node
         next = std::make_unique<node>(p->next);
+      //make_unique returns an object of type std::unique_ptr
     }
-  };
+  }; //end of node 
 
-  std::unique_ptr<node> head;
-
-  template <class OT>
-  void push_back(OT&& v);
+  std::unique_ptr<node> head; //first the node of the list
 
   template <class OT>
-  void push_front(OT&& v) {
+  void push_back(OT&& v); //append a node at the end of the list
+
+  template <class OT>
+  void push_front(OT&& v) { //append a node in front of the list
+    //want v to be the first of the list
+    //need to pass rvalue reference because we want to use forward
+
     // auto h = head.release();
     // auto new_node = new node {v,h};
     // head.reset(new_node);
@@ -36,10 +46,18 @@ class List {
     // head.reset(new node{v, head.release()});
 
     head = std::make_unique<node>(std::forward<OT>(v), head.release());
+    //as value it takes v
+    //previous head now is the second of the list
+    //so the new head has to the point to the old head
+    //this is done realising head
+    
+    //the list is templated on T
+    //T is the type of the values stored in the nodes
+    
   }
   // void push_front(T&& v);
 
-  node* tail() noexcept;
+  node* tail() noexcept; //returns a pointer to the last node of the list
 
  public:
   List() noexcept = default;
@@ -54,7 +72,7 @@ class List {
 
   template <class O>
   friend std::ostream& operator<<(std::ostream&, const List<O>&);
-};
+}; //end of list
 
 template<typename O>
 class __iterator;
@@ -79,9 +97,9 @@ template<typename O>
 
 template <class T>
 typename List<T>::node* List<T>::tail() noexcept {
-  auto tmp = head.get();
+  auto tmp = head.get(); //.get() returns a pointer to head
 
-  while (tmp->next)
+  while (tmp->next) //until it is the nullptr
     tmp = tmp->next.get();
 
   return tmp;
@@ -89,7 +107,7 @@ typename List<T>::node* List<T>::tail() noexcept {
 
 template <class T>
 template <class OT>
-void List<T>::insert(OT&& v, const method m) {
+void List<T>::insert(OT&& v, const method m) { //or at the beginning or at the end
   if (!head) {
     // head.reset(new node{v,nullptr});
     head = std::make_unique<node>(std::forward<OT>(v), nullptr);

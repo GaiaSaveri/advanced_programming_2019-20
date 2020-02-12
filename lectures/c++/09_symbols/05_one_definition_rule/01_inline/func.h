@@ -7,7 +7,7 @@ inline void dummy() { //if we use static we resolve the issue
 //or better we use inline
 //inline is a suggestion for the compiler to not put a jump
 //for that function
-//but copy and paste the cintent of the function
+//but copy and paste the content of the function
 //only small functions
 //compiler is free to ignore the suggestion
 

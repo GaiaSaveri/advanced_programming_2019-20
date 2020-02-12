@@ -5,11 +5,11 @@
 
 template <typename T>
 class Vector {
-  //unique pointer to an array, can't have memory leaks with unique pointers
-//mart pointer that owns and manages another object through a 
+//unique pointer to an array, can't have memory leaks with unique pointers
+//smart pointer that owns and manages another object through a 
 //pointer and disposes of that object 
 //when the unique_ptr goes out of scope
-//deleted when the object pointedby is destroyed
+//deleted when the object pointed by is destroyed
 //or when the object is assigned to another pointer
 //Only non-const unique_ptr can transfer the ownership of the 
 //managed object to another unique_ptr

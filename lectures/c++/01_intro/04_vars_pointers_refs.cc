@@ -17,6 +17,6 @@ int main() {
   ref = 7.7;
   std::cout << "value of   d: " << d << std::endl;
 
-  *ptr = 5.5;
+  *ptr = 5.5; //dereference operator --> ok lhs of an assignment
   std::cout << "value of   d: " << d << std::endl;
 }
