@@ -2,8 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static const int val1 = -5;
-const int val2 = 10;
+static const int val1 = -5; //internal linkage
+//--> not used outside the
+//translation unit where it is defined
+const int val2 = 10; //external linkage 
 static int val3 = -20;
 int val4 = -15;
 extern int errno;

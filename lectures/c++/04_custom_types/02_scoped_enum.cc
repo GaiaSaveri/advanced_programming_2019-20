@@ -26,6 +26,9 @@ void dwim(const color c) {
   }
 }
 
+//the purpose of scoped enum is to allow different anums in the same scope
+//to use the same names for their values
+
 int main() {
   color opt{color::red};//inizialization
     // opt = 3;     // cannot assign int to enum

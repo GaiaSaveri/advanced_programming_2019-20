@@ -8,7 +8,8 @@ struct A {
   A() { std::cout << "A ctor\n"; }
 };
 
-// A::A() { std::cout << "A ctor\n"; } --> NO! 
+//inline --> solves the problem
+ //A::A() { std::cout << "A ctor\n"; } //--> NO! 
 // why not --> mult def of A()
 //the definition of a function cannot appear many time
 

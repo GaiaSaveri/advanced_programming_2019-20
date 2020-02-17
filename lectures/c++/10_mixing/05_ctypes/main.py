@@ -1,13 +1,33 @@
 #/usr/bin/env python3
 
+#creo una shared library dal codice C e la importo in Python
+#dso=CDLL("nome_shared_library")
+#ppi compilo il main normalmente con Python3
+
+#tradurre funzioni
+#dso.name_function.argtypes = []
+#dso.name_function.restype = 
+#chiamare funzioni
+#dso.name_function(arguments)
+#pointer arguments POINTER(name_argument)
+#reference argument byref(name_argument)
+
+#tradurre struct
+#class Name_structure(Structure):
+#members
+# _fields_ = [members IN ORDER, ("nome", tipo)]
+
 from ctypes import *
 dso = CDLL("./libhello.so") # import shared object on POSIX compatible OS
 
 ## functions w/o args
-dso.hello()
+dso.hello() #no argument, return void
 
 
 ## strings
+#repeat:
+#arguments: char
+#return: int
 dso.repeat.argtypes = [c_char_p]
 dso.repeat.restype = c_int
 res = dso.repeat(b"ctypes are great") # use b to pass read-only variable
@@ -36,7 +56,8 @@ print("the sum of d_array is", array_sum(d_array,size))
 class data(Structure):
     _fields_ = [("i",c_int),
                 ("name",c_char_p),
-                ("energy",c_double)] # order is crucial otherwise seg-fault
+                ("energy",c_double)] 
+                # order is crucial otherwise seg-fault
 
 param = data(name=b"Alberto", energy=99.9, i=42)
 

@@ -26,11 +26,14 @@ int main() {
   return 0;
 }
 
+//functions defined in a namespace can be implemented 
+//outside the namespace but with the fully qualified name
 void choose_a_name::nested::hello1() {
   std::cout << "hello1 from nested\n"
             << "variable is " << choose_a_name::variable << std::endl;
 }
 
+//or we can reopen the namespace to define the function
 namespace choose_a_name {
   namespace nested {
     void hello2() {

@@ -80,6 +80,8 @@ Foo::~Foo() {
 //functions with special name
 //in this case we want to overload << operator
 //the overload operator must be defined outside the class
+//if we define it inside the class it will work
+//with the class in the lhs of the operator
 //at least one of its operands has a class type or an enumeration time
 //overload operators are expected to work as similar as possible to the built in
 std::ostream& operator<<(std::ostream& os, const Foo& f) {

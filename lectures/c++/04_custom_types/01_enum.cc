@@ -10,8 +10,6 @@ enum color { red, yellow, green };
 //enumeration is a distinct type whose value is restricted to a range of values
 //which may include several explicitly named constants (enumerators)
 
-//metti const expression nel file di conersione da m a inch
-
 
 void dwim(const color c) {
   //switch is handful when we have a lot of if statements

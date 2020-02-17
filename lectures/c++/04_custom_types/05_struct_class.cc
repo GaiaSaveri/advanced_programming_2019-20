@@ -2,10 +2,10 @@
 #include <iostream>
 #include <vector>
 
+//in C there are structs that can contain only data
+
+
 struct Point_s {
-  //private is the default visibility of the symbols
-  //this is a difference with C struct
-  //private:
   double x;
   double y;
   //public::

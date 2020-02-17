@@ -16,13 +16,13 @@ struct Foo {
 }; //size of the class foo is the size of int
 //all the objects of type foo share the same static variables
 
-double Foo::s; //same as the s before
+double Foo::s; //COMPULSORY //same as the s before
 //this is the declaration for static double s
 //fully qualified name
 //as it was a global var
 
-// double Foo::s = 0;
-// double Foo::s = 9;
+//double Foo::s = 0; --> ok
+// double Foo::s = 9; --> ok
 
 // int Foo::i = 2; // error, only static members can be defined out of class
 

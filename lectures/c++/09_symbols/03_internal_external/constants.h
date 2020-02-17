@@ -13,7 +13,7 @@
 //all the file in which we want to use global vars
 //than there is no need to repeat anything
 //but we need to link against global.cc
-//global.cc is useful for the liner
+//global.cc is useful for the linker
 //global.h is useful for the compiler
 
 

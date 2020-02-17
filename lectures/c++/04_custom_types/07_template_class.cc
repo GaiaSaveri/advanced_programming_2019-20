@@ -16,6 +16,9 @@ class Vector {
   //RAII Resource Aquisition Is Initialization
   //resourced has been acquired at construction time
   //release in the destructor
+  
+  //if we acquire memory inside a class, we must release it 
+  //in the destructor
 
   // automatically release the acquired memory
   ~Vector() { delete[] elem; }
@@ -52,6 +55,8 @@ int main() {
   std::cout << v << std::endl;
 
   Vector<double>* pv{&v};
+  
+  //operator overloadings does not apply to pointers:
 
   // first dereference the pointer, then I can use the defined operators
   (*pv)[0] = -99.999;

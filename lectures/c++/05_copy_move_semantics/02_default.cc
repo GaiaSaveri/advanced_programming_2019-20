@@ -6,6 +6,8 @@
 
 //a default constructor is a constructor that can  be invoked without arguments
 
+
+
 struct S {
   // 2 built in type members
   int a;
@@ -33,7 +35,6 @@ int main() {
   std::cout << s1.a << "--" << s1.b << "--" << s1.s << "\n";
   std::cout << s2.a << "--" << s2.b << "--" << s2.s << "\n";
   std::cout << s3.a << "--" << s3.b << "--" << s3.s << "\n";
-
   return 0;
 }
 
